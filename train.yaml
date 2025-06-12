@@ -1,0 +1,4 @@
+train: dataset/yolo_dataset/train
+val: dataset/yolo_dataset/valid
+test: dataset/yolo_dataset/test
+nc: 43
