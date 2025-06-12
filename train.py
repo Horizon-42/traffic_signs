@@ -2,7 +2,7 @@ from ultralytics import YOLO
 # from ultralytics import 
 
 # Load a model
-model = YOLO("yolo11n.pt")
+model = YOLO("runs/detect/train/weights/best.pt")
 
 # Train the model
 train_results = model.train(
@@ -13,7 +13,8 @@ train_results = model.train(
     batch=16,  # Adjust batch size based on GPU memory
     workers=4,  # Number of dataloader workers
     optimizer="AdamW",  # AdamW optimizer (optional, can use "SGD")
-    lr0=0.005,  # Initial learning rate
+    lr0=0.01,  # Initial learning rate
+    lrf=0.01,
     patience=50,  # Early stopping patience
     seed=42,  # Random seed for reproducibility
     verbose=True, # Display training progress
