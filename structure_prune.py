@@ -141,7 +141,7 @@ def optimize_yolo_structured_pruning(
             dummy_input,
             importance,
             DG, # Pass the dependency graph
-            pruning_ratio=pruning_ratio,
+            pruning_ratio=float(pruning_ratio),
             ignored_layers=actual_ignored_layers_list,
         )
         # CORRECTED: Call pruner.step() instead of pruner.prune()

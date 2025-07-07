@@ -95,7 +95,8 @@ def test_yolo_model(model_path, data_yaml_path, img_size=640, batch_size=16, con
 
 if __name__ == "__main__":
     # --- Configuration ---
-    YOLO_MODEL_PATH = 'runs/detect/train3/weights/best.pt'
+    TRAIN = "train11"
+    YOLO_MODEL_PATH = f'runs/detect/{TRAIN}/weights/best.pt'
     DATASET_YAML_PATH = 'train.yaml' 
 
     if not os.path.exists(DATASET_YAML_PATH):
@@ -104,7 +105,7 @@ if __name__ == "__main__":
               f"If it's a custom dataset, please ensure the path is correct and the file exists.")
 
     # Optional: Adjust validation parameters
-    IMAGE_SIZE = 32
+    IMAGE_SIZE = 64
     BATCH_SIZE = 320
     CONF_THRESHOLD = 0.001 
     IOU_THRESHOLD = 0.7    
@@ -115,7 +116,7 @@ if __name__ == "__main__":
     VERBOSE_OUTPUT = True
     
     # New parameter for the summarized metrics JSON file
-    OUTPUT_METRICS_JSON_FILE = "yolo_val_metrics_summary_m.json"
+    OUTPUT_METRICS_JSON_FILE = f"yolo_val_metrics_summary_{TRAIN}.json"
 
     # --- Run the test ---
     test_yolo_model(
