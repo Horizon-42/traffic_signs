@@ -127,6 +127,7 @@ def optimize_yolo_structured_pruning(
     print("Building model dependency graph...")
     try:
         DG = tp.DependencyGraph().build_dependency(base_model, example_inputs=dummy_input)
+        DG.verbose
         print("Dependency graph built successfully.")
     except Exception as e:
         print(f"Error: Failed to build dependency graph: {e}")
@@ -176,7 +177,7 @@ def optimize_yolo_structured_pruning(
 if __name__ == "__main__":
     # --- Configuration Parameters ---
     # Replace with your YOLO model file path (e.g., yolov8n.pt, yolov11m.pt)
-    yolo_model_file = 'runs/detect/train11/weights/best.pt'
+    yolo_model_file = 'models/best.pt'
     output_pruned_model_file = 'yolov11m_pruned_optimized.pt'
     pruning_ratio_val = 0.9 # Prune 35%
     input_shape = (1, 3, 64, 64)  # YOLO model input size (N, C, H, W)
