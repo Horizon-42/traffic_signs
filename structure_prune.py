@@ -176,10 +176,10 @@ def optimize_yolo_structured_pruning(
 if __name__ == "__main__":
     # --- Configuration Parameters ---
     # Replace with your YOLO model file path (e.g., yolov8n.pt, yolov11m.pt)
-    yolo_model_file = 'runs/detect/train3/weights/yolo11_m_best.pt' 
+    yolo_model_file = 'runs/detect/train11/weights/best.pt'
     output_pruned_model_file = 'yolov11m_pruned_optimized.pt'
     pruning_ratio_val = 0.9 # Prune 35%
-    input_shape = (1, 3, 640, 640) # YOLO model input size (N, C, H, W)
+    input_shape = (1, 3, 64, 64)  # YOLO model input size (N, C, H, W)
 
     # Layers to ignore: can be a list of module name strings or module objects.
     # For YOLO models, the detection head is typically not pruned.

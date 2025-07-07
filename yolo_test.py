@@ -96,7 +96,10 @@ def test_yolo_model(model_path, data_yaml_path, img_size=640, batch_size=16, con
 if __name__ == "__main__":
     # --- Configuration ---
     TRAIN = "train11"
-    YOLO_MODEL_PATH = f'runs/detect/{TRAIN}/weights/best.pt'
+    MODEL_NAME = "best_pruned-int8.onnx"
+    # YOLO_MODEL_PATH = f'runs/detect/{TRAIN}/weights/{MODEL_NAME}.pt'
+    YOLO_MODEL_PATH = MODEL_NAME
+
     DATASET_YAML_PATH = 'train.yaml' 
 
     if not os.path.exists(DATASET_YAML_PATH):
@@ -116,7 +119,7 @@ if __name__ == "__main__":
     VERBOSE_OUTPUT = True
     
     # New parameter for the summarized metrics JSON file
-    OUTPUT_METRICS_JSON_FILE = f"yolo_val_metrics_summary_{TRAIN}.json"
+    OUTPUT_METRICS_JSON_FILE = f"yolo_val_metrics_summary_{TRAIN}_{MODEL_NAME}.json"
 
     # --- Run the test ---
     test_yolo_model(
