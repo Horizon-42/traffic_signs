@@ -3,7 +3,7 @@ import yaml
 import onnx
 import numpy as np
 from ultralytics import YOLO
-from onnxruntime.quantization import quantize_static, CalibrationDataReader, QuantType, QuantFormat
+from onnxruntime.quantization import quantize_static, quantize_dynamic, CalibrationDataReader, QuantType, QuantFormat
 import onnxruntime as ort
 from tqdm import tqdm
 import cv2
@@ -58,10 +58,13 @@ def quantize_model(fp32_model_path, int8_model_path, dataset_yaml_path):
         model_input=fp32_model_path,
         model_output=int8_model_path,
         calibration_data_reader=dr,
-        quant_format=QuantFormat.QDQ,  # QDQ 格式也可以，写成 QuantType.QDQ
+        quant_format=QuantFormat.QOperator,  # QDQ 格式也可以，写成 QuantType.QDQ
         per_channel=True,
+        weight_type=QuantType.QInt8,
+        activation_type=QuantType.QInt8
     )
     print(f"[✓] 已保存 INT8 模型至 {int8_model_path}")
+
 
 
 if __name__ == '__main__':
