@@ -17,3 +17,9 @@ Reduce size of Conv layers 10%.
 ## Quantization
 Use onnxruntime to quantize the model to int8
 python3 quantize.py
+
+## Analysis
+- Disk Usage: 2.80 MBs
+- Total Model Parameters: 2,607,255
+- Estimated Weight RAM Usage: 2.53 MB
+- FLOPS: 63.58M

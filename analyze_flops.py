@@ -41,9 +41,9 @@ def analyze_yolov11_pt_flops(model_path, img_size=640, batch_size=1):
         # clever_format 用于将大数字格式化为 B, M, G 等单位
         macs, params = clever_format([macs, params], "%.2f")
 
-        print(f"**输入尺寸**: {img_size}x{img_size} (Batch Size: {batch_size})")
-        print(f"**模型参数量**: {params}")
-        print(f"**FLOPs (GFLOPs)**: {macs} (这里通常是 MACs，乘以2可以近似为 FLOPs)")
+        print(f"输入尺寸: {img_size}x{img_size} (Batch Size: {batch_size})")
+        print(f"模型参数量: {params}")
+        print(f"Macs: {macs}")
         print("\nNote: For convolutional layers, 1 MAC (Multiply-Accumulate) is often considered 2 FLOPs (1 multiplication + 1 addition).")
         print("      So, the actual FLOPs might be approximately twice the reported MACs.")
 
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     # 如果你的模型是其他尺寸（例如 416x416），请调整 img_size
     
     # 官方的 YOLOv11n 模型通常使用 640x640 的输入尺寸
-    model_file = 'best_pruned.pt' 
+    model_file = 'models/best_pruned.pt'
     input_image_size = 64
 
     # 运行分析
