@@ -6,7 +6,9 @@ model = YOLO("models/yolo11n-cls.pt")
 
 # Train the model
 train_results = model.train(
-    data="train.yaml",  # Path to dataset YAML (must be segmentation-compatible)
+    # data="train.yaml",  # Path to dataset YAML (must be segmentation-compatible)
+    task="classify",
+    data="data/dataset/classification_data",
     epochs=1000,  # Number of training epochs
     imgsz=64,  # Image size
     device="cpu",  # GPUs to use (or "cpu" for CPU training)
