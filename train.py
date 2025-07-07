@@ -2,14 +2,14 @@ from ultralytics import YOLO
 # from ultralytics import 
 
 # Load a model
-model = YOLO("yolo11n.pt")
+model = YOLO("models/yolo11n-cls.pt")
 
 # Train the model
 train_results = model.train(
     data="train.yaml",  # Path to dataset YAML (must be segmentation-compatible)
     epochs=1000,  # Number of training epochs
     imgsz=64,  # Image size
-    device=0,  # GPUs to use (or "cpu" for CPU training)
+    device="cpu",  # GPUs to use (or "cpu" for CPU training)
     batch=320,  # Adjust batch size based on GPU memory
     workers=4,  # Number of dataloader workers
     optimizer="AdamW",  # AdamW optimizer (optional, can use "SGD")
@@ -22,6 +22,7 @@ train_results = model.train(
     pretrained = True,
     single_cls = False,
     cos_lr=True,
+
 )
 
 print("train finished!!!!!!!!!!!!!!!")
